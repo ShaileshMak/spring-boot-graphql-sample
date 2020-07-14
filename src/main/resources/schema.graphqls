@@ -1,0 +1,72 @@
+schema {
+    query: Query
+    mutation: Mutation
+    subscription: Subscription
+}
+type Geo {
+    geoId: ID!
+    lat: String
+    lng: String
+}
+
+type Address {
+    addressId: ID!
+    street: String
+    suit: String
+    city: String
+    zipcode: String
+    geo: Geo
+}
+
+type Company {
+    companyId: ID!
+    name: String
+    catchPhrase: String
+    bs: String
+}
+
+type User {
+    id: ID!
+    name: String
+    userName: String
+    password: String
+    phone: String
+    website: String
+    address: Address
+    company: Company
+}
+
+type Query {
+    users : [User]
+    addresses: [Address]
+    geos: [Geo]
+    companies: [Company]
+    user(id : ID) : User
+}
+
+input UserRequest {
+    name: String
+    userName: String
+    password: String
+    phone: String
+    website: String
+    street: String
+    suit: String
+    city: String
+    zipcode: String
+    lat: String
+    lng: String
+    companyName: String
+    catchPhrase: String
+    bs: String
+}
+
+type Mutation {
+    addUser(userRequest : UserRequest) : User
+    updateUserForId(id: ID, userRequest : UserRequest) : User
+    deleteUserForId(id : ID) : ID
+}
+
+type Subscription {
+    onUserUpdate(userId: ID) : User
+}

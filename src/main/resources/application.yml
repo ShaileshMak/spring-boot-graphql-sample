@@ -1,0 +1,17 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+      ejb:
+        naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: "jdbc:postgresql://localhost:5433/userDB"
+    username: postgres
+    password: user
+
+graphql:
+  servlet:
+    corsEnabled: true
+    mapping: /graphql
+    embeded: true
